@@ -1,0 +1,382 @@
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(date 1722788230877)
++++ b/.idea/.gitignore	(date 1722788230877)
+@@ -0,0 +1,3 @@
++# Default ignored files
++/shelf/
++/workspace.xml
+Index: IN_LAB_3_StructuralDP_MusicAPP/src/AdvancedMusicPlayer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/IN_LAB_3_StructuralDP_MusicAPP/src/AdvancedMusicPlayer.java b/IN_LAB_3_StructuralDP_MusicAPP/src/AdvancedMusicPlayer.java
+new file mode 100644
+--- /dev/null	(date 1722574738000)
++++ b/IN_LAB_3_StructuralDP_MusicAPP/src/AdvancedMusicPlayer.java	(date 1722574738000)
+@@ -0,0 +1,16 @@
++// AdvancedMusicPlayer.java
++public class AdvancedMusicPlayer extends MusicPlayer {
++    public AdvancedMusicPlayer(MusicSource musicSource) {
++        super(musicSource);
++    }
++
++    @Override
++    public void playMusic() {
++        musicSource.play();
++    }
++
++    @Override
++    public void stopMusic() {
++        musicSource.stop();
++    }
++}
+\ No newline at end of file
+Index: IN_LAB_3_StructuralDP_MusicAPP/src/MusicSource.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/IN_LAB_3_StructuralDP_MusicAPP/src/MusicSource.java b/IN_LAB_3_StructuralDP_MusicAPP/src/MusicSource.java
+new file mode 100644
+--- /dev/null	(date 1722574738000)
++++ b/IN_LAB_3_StructuralDP_MusicAPP/src/MusicSource.java	(date 1722574738000)
+@@ -0,0 +1,7 @@
++// MusicSource.java
++public interface MusicSource {
++    void play();
++    void stop();
++}
++
++
+Index: IN_LAB_3_StructuralDP_MusicAPP/src/EqualizerDecorator.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/IN_LAB_3_StructuralDP_MusicAPP/src/EqualizerDecorator.java b/IN_LAB_3_StructuralDP_MusicAPP/src/EqualizerDecorator.java
+new file mode 100644
+--- /dev/null	(date 1722574454000)
++++ b/IN_LAB_3_StructuralDP_MusicAPP/src/EqualizerDecorator.java	(date 1722574454000)
+@@ -0,0 +1,16 @@
++//EqualizerDecorator.java
++public class EqualizerDecorator extends MusicPlayerDecorator {
++    public EqualizerDecorator(MusicPlayer decoratedMusicPlayer) {
++        super(decoratedMusicPlayer);
++    }
++   
++    @Override
++    public void playMusic() {
++        decoratedMusicPlayer.playMusic();
++        setEqualizer();
++    }
++   
++    private void setEqualizer() {
++        System.out.println("Equalizer settings applied.");
++    }
++   }
+\ No newline at end of file
+Index: IN_LAB_3_StructuralDP_MusicAPP/src/App.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/IN_LAB_3_StructuralDP_MusicAPP/src/App.java b/IN_LAB_3_StructuralDP_MusicAPP/src/App.java
+new file mode 100644
+--- /dev/null	(date 1722574718000)
++++ b/IN_LAB_3_StructuralDP_MusicAPP/src/App.java	(date 1722574718000)
+@@ -0,0 +1,21 @@
++public class App {
++    public static void main(String[] args) throws Exception {
++        // Using Adapter Pattern to adapt different music sources
++     MusicSource localFile = new LocalFileMusicSource();
++     MusicSource onlineStreaming = new OnlineStreamingMusicSource();
++     MusicSource radioStation = new RadioStationMusicSource();
++
++     // Using Bridge Pattern to decouple music playback from music source
++     MusicPlayer localFilePlayer = new AdvancedMusicPlayer(localFile);
++     MusicPlayer onlineStreamingPlayer = new AdvancedMusicPlayer(onlineStreaming);
++     MusicPlayer radioStationPlayer = new AdvancedMusicPlayer(radioStation);
++
++     // Using Decorator Pattern to add additional features to music playback
++     MusicPlayer equalizerPlayer = new EqualizerDecorator(localFilePlayer);
++     MusicPlayer volumeControlPlayer = new VolumeControlDecorator(equalizerPlayer);
++
++     // Play music with additional features
++     volumeControlPlayer.playMusic();
++     volumeControlPlayer.stopMusic();
++    }
++}
+Index: IN_LAB_3_StructuralDP_MusicAPP/src/MusicPlayer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/IN_LAB_3_StructuralDP_MusicAPP/src/MusicPlayer.java b/IN_LAB_3_StructuralDP_MusicAPP/src/MusicPlayer.java
+new file mode 100644
+--- /dev/null	(date 1722574738000)
++++ b/IN_LAB_3_StructuralDP_MusicAPP/src/MusicPlayer.java	(date 1722574738000)
+@@ -0,0 +1,11 @@
++//MusicPlayer.java
++public abstract class MusicPlayer {
++    protected MusicSource musicSource;
++   
++    protected MusicPlayer(MusicSource musicSource) {
++        this.musicSource = musicSource;
++    }
++   
++    public abstract void playMusic();
++    public abstract void stopMusic();
++   }
+Index: IN_LAB_3_StructuralDP_MusicAPP/src/LocalFileMusicSource.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/IN_LAB_3_StructuralDP_MusicAPP/src/LocalFileMusicSource.java b/IN_LAB_3_StructuralDP_MusicAPP/src/LocalFileMusicSource.java
+new file mode 100644
+--- /dev/null	(date 1722574480000)
++++ b/IN_LAB_3_StructuralDP_MusicAPP/src/LocalFileMusicSource.java	(date 1722574480000)
+@@ -0,0 +1,12 @@
++//LocalFileMusicSource.java
++public class LocalFileMusicSource implements MusicSource {
++    @Override
++    public void play() {
++        System.out.println("Playing music from local file.");
++    }
++   
++    @Override
++    public void stop() {
++        System.out.println("Stopping music from local file.");
++    }
++   }
+\ No newline at end of file
+Index: IN_LAB_3_StructuralDP_MusicAPP/src/MusicPlayerDecorator.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/IN_LAB_3_StructuralDP_MusicAPP/src/MusicPlayerDecorator.java b/IN_LAB_3_StructuralDP_MusicAPP/src/MusicPlayerDecorator.java
+new file mode 100644
+--- /dev/null	(date 1722574556000)
++++ b/IN_LAB_3_StructuralDP_MusicAPP/src/MusicPlayerDecorator.java	(date 1722574556000)
+@@ -0,0 +1,19 @@
++//MusicPlayerDecorator.java
++public abstract class MusicPlayerDecorator extends MusicPlayer {
++    protected MusicPlayer decoratedMusicPlayer;
++   
++    public MusicPlayerDecorator(MusicPlayer decoratedMusicPlayer) {
++        super(decoratedMusicPlayer.musicSource);
++        this.decoratedMusicPlayer = decoratedMusicPlayer;
++    }
++   
++    @Override
++    public void playMusic() {
++        decoratedMusicPlayer.playMusic();
++    }
++   
++    @Override
++    public void stopMusic() {
++        decoratedMusicPlayer.stopMusic();
++    }
++   }
+Index: IN_LAB_3_StructuralDP_MusicAPP/src/OnlineStreamingMusicSource.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/IN_LAB_3_StructuralDP_MusicAPP/src/OnlineStreamingMusicSource.java b/IN_LAB_3_StructuralDP_MusicAPP/src/OnlineStreamingMusicSource.java
+new file mode 100644
+--- /dev/null	(date 1722574604000)
++++ b/IN_LAB_3_StructuralDP_MusicAPP/src/OnlineStreamingMusicSource.java	(date 1722574604000)
+@@ -0,0 +1,13 @@
++//OnlineStreamingMusicSource.java
++public class OnlineStreamingMusicSource implements MusicSource {
++    @Override
++    public void play() {
++       System.out.println("Playing music from online streaming service.");
++    }
++    
++    @Override
++    public void stop() {
++       System.out.println("Stopping music from online streaming service.");
++    }
++    }
++    
+\ No newline at end of file
+Index: IN_LAB_3_StructuralDP_MusicAPP/src/VolumeControlDecorator.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/IN_LAB_3_StructuralDP_MusicAPP/src/VolumeControlDecorator.java b/IN_LAB_3_StructuralDP_MusicAPP/src/VolumeControlDecorator.java
+new file mode 100644
+--- /dev/null	(date 1722574654000)
++++ b/IN_LAB_3_StructuralDP_MusicAPP/src/VolumeControlDecorator.java	(date 1722574654000)
+@@ -0,0 +1,16 @@
++// VolumeControlDecorator.java
++public class VolumeControlDecorator extends MusicPlayerDecorator {
++    public VolumeControlDecorator(MusicPlayer decoratedMusicPlayer) {
++        super(decoratedMusicPlayer);
++    }
++
++    @Override
++    public void playMusic() {
++        decoratedMusicPlayer.playMusic();
++        setVolume();
++    }
++
++    private void setVolume() {
++        System.out.println("Volume control settings applied.");
++    }
++}
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+new file mode 100644
+--- /dev/null	(date 1722788230354)
++++ b/.idea/modules.xml	(date 1722788230354)
+@@ -0,0 +1,11 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/.idea/AOOP.iml" filepath="$PROJECT_DIR$/.idea/AOOP.iml" />
++      <module fileurl="file://$PROJECT_DIR$/IN_LAB_2_CreationalDP_GameAPP/IN_LAB_2_CreationalDP_GameAPP.iml" filepath="$PROJECT_DIR$/IN_LAB_2_CreationalDP_GameAPP/IN_LAB_2_CreationalDP_GameAPP.iml" />
++      <module fileurl="file://$PROJECT_DIR$/IN_LAB_3_StructuralDP_MusicAPP/IN_LAB_3_StructuralDP_MusicAPP.iml" filepath="$PROJECT_DIR$/IN_LAB_3_StructuralDP_MusicAPP/IN_LAB_3_StructuralDP_MusicAPP.iml" />
++      <module fileurl="file://$PROJECT_DIR$/Logger/Logger.iml" filepath="$PROJECT_DIR$/Logger/Logger.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+Index: IN_LAB_3_StructuralDP_MusicAPP/src/RadioStationMusicSource.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/IN_LAB_3_StructuralDP_MusicAPP/src/RadioStationMusicSource.java b/IN_LAB_3_StructuralDP_MusicAPP/src/RadioStationMusicSource.java
+new file mode 100644
+--- /dev/null	(date 1722574630000)
++++ b/IN_LAB_3_StructuralDP_MusicAPP/src/RadioStationMusicSource.java	(date 1722574630000)
+@@ -0,0 +1,13 @@
++
++//RadioStationMusicSource.java
++public class RadioStationMusicSource implements MusicSource {
++    @Override
++    public void play() {
++       System.out.println("Playing music from radio station.");
++    }
++    
++    @Override
++    public void stop() {
++       System.out.println("Stopping music from radio station.");
++    }
++    }
+\ No newline at end of file
+Index: .idea/AOOP.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/AOOP.iml b/.idea/AOOP.iml
+new file mode 100644
+--- /dev/null	(date 1722788230276)
++++ b/.idea/AOOP.iml	(date 1722788230276)
+@@ -0,0 +1,9 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="JAVA_MODULE" version="4">
++  <component name="NewModuleRootManager" inherit-compiler-output="true">
++    <exclude-output />
++    <content url="file://$MODULE_DIR$" />
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+new file mode 100644
+--- /dev/null	(date 1722788230354)
++++ b/.idea/misc.xml	(date 1722788230354)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="21" project-jdk-type="JavaSDK">
++    <output url="file://$PROJECT_DIR$/out" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1722788230354)
++++ b/.idea/vcs.xml	(date 1722788230354)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: Logger/Logger.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Logger/Logger.iml b/Logger/Logger.iml
+new file mode 100644
+--- /dev/null	(date 1722788230331)
++++ b/Logger/Logger.iml	(date 1722788230331)
+@@ -0,0 +1,11 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="JAVA_MODULE" version="4">
++  <component name="NewModuleRootManager" inherit-compiler-output="true">
++    <exclude-output />
++    <content url="file://$MODULE_DIR$">
++      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: IN_LAB_3_StructuralDP_MusicAPP/IN_LAB_3_StructuralDP_MusicAPP.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/IN_LAB_3_StructuralDP_MusicAPP/IN_LAB_3_StructuralDP_MusicAPP.iml b/IN_LAB_3_StructuralDP_MusicAPP/IN_LAB_3_StructuralDP_MusicAPP.iml
+new file mode 100644
+--- /dev/null	(date 1722788230354)
++++ b/IN_LAB_3_StructuralDP_MusicAPP/IN_LAB_3_StructuralDP_MusicAPP.iml	(date 1722788230354)
+@@ -0,0 +1,11 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="JAVA_MODULE" version="4">
++  <component name="NewModuleRootManager" inherit-compiler-output="true">
++    <exclude-output />
++    <content url="file://$MODULE_DIR$">
++      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
