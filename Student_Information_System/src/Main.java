@@ -1,15 +1,32 @@
+import Course.*;
+import Enrollment.*;
+import Student.*;
+
 public class Main {
     public static void main(String[] args) {
-        Student student = new Student("4954654646", "Chakri");
-        Course course = new Course("561564", "AOOP");
+        IStudent student1 = new CSE("12345", "Alice");
+        IStudent student2 = new ECE("54321", "Bob");
+        ICourse course1 = new RegularMode("CS101", "Introduction to Computer Science");
+        ICourse course2 = new AdvancedMode("MATH201", "Calculus II");
 
-        student.enrollCourse("561564");
-        course.enrollStudent("4954654646");
+        Enrollment enrollment1 = new Enrollment(student1, course1);
+        Enrollment enrollment2 = new Enrollment(student2, course2);
 
-        Enrollment enrollment = new Enrollment();
-        enrollment.enroll(student, course);
+        StudentManager studentManager = new StudentManager();
+        CourseManager courseManager = new CourseManager();
+        EnrollmentManager enrollmentManager = new EnrollmentManager();
 
-        System.out.println(student);
-        System.out.println(course);
+        studentManager.addStudent(student1);
+        studentManager.addStudent(student2);
+        courseManager.addCourse(course1);
+        courseManager.addCourse(course2);
+        enrollmentManager.addEnrollment(enrollment1);
+        enrollmentManager.addEnrollment(enrollment2);
+
+        System.out.println(student1.getName());
+        System.out.println(course1.getName());
+        System.out.println(enrollment1.getStudent().getName());
+        System.out.println(enrollment1.getCourse().getName());
     }
 }
+
