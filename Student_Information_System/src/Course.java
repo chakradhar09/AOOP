@@ -3,9 +3,9 @@ import java.util.ArrayList;
 public class Course implements ICourse{
     private final String courseID;
     private final String name;
-    private final ArrayList<String> students;
+    private ArrayList<String> students = null;
 
-    public Course(String courseID, String name, ArrayList<String> students){
+    public Course(String courseID, String name){
         this.courseID = courseID;
         this.name = name;
         this.students = new ArrayList<>();
@@ -19,7 +19,8 @@ public class Course implements ICourse{
         students.add(studentID);
     }
 
-    public ArrayList<String> getStudents(){
-        return students;
+    public String toString(){
+        return "\nCourse ID: " + courseID + '\n'+
+                "Course Name: " + name +'\n';
     }
 }
