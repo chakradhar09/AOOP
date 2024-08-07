@@ -1,5 +1,5 @@
 public class MyApplication {
-    private MessageService messageService;
+    private final MessageService messageService;
 
     public MyApplication(MessageService messageService){
         this.messageService = messageService;
