@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/30360_5B.iml" filepath="$PROJECT_DIR$/30360_5B.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SRS/SRS.iml" filepath="$PROJECT_DIR$/SRS/SRS.iml" />
+    </modules>
+  </component>
+</project>
