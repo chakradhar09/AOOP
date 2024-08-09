@@ -5,6 +5,9 @@ import Library.*;
 import java.util.Scanner;
 
 public class Main {
+    static MemberShipManager memberShipManager = new MemberShipManager();
+    static BookManager bookManager = new BookManager();
+
     static void menu(){
         System.out.println("1.New Membership");
         System.out.println("2.Show Membership Details");
@@ -34,8 +37,6 @@ public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         ILibrary library = new Library();
-        MemberShipManager memberShipManager = new MemberShipManager();
-        BookManager bookManager = new BookManager();
         IMembership membership = null;
         IBook book = null;
 
