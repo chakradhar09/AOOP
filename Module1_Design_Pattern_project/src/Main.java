@@ -14,14 +14,14 @@ public class Main {
         System.out.println("UnderlinedItalic");
         System.out.println("UnderlinedItalicBold");
         System.out.println("Exit");
-        System.out.println("Type menu to show commands");
+        System.out.println("Type menu to show formating commands");
     }
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         TextFormatter textFormatter;
         String text;
-        String choice;
+        String command;
 
         System.out.print("Enter Text: ");
         text = input.nextLine();
@@ -29,41 +29,41 @@ public class Main {
         do{
 
             System.out.print("Text Format: ");
-            choice = input.nextLine();
-            if(choice.equalsIgnoreCase("menu"))
+            command = input.nextLine();
+            if(command.equalsIgnoreCase("menu"))
                 textProcessorMenu();
-            else if(choice.equalsIgnoreCase("bold")){
+            else if(command.equalsIgnoreCase("bold")){
                 textFormatter = new BoldFormatter(new BaseFormatter());
                 System.out.println(textFormatter.format(text));
             }
-            else if(choice.equalsIgnoreCase("italic")){
+            else if(command.equalsIgnoreCase("italic")){
                 textFormatter = new ItalicFormatter(new BaseFormatter());
                 System.out.println(textFormatter.format(text));
             }
-            else if(choice.equalsIgnoreCase("underlined")){
+            else if(command.equalsIgnoreCase("underlined")){
                 textFormatter = new UnderlineFormatter(new BaseFormatter());
                 System.out.println(textFormatter.format(text));
             }
-            else if(choice.equalsIgnoreCase("italicbold")){
+            else if(command.equalsIgnoreCase("italicbold")){
                 textFormatter = new BoldFormatter(new ItalicFormatter(new BaseFormatter()));
                 System.out.println(textFormatter.format(text));
             }
-            else if(choice.equalsIgnoreCase("underlinedbold")){
+            else if(command.equalsIgnoreCase("underlinedbold")){
                 textFormatter = new BoldFormatter(new UnderlineFormatter(new BaseFormatter()));
                 System.out.println(textFormatter.format(text));
             }
-            else if(choice.equalsIgnoreCase("underlineditalic")){
+            else if(command.equalsIgnoreCase("underlineditalic")){
                 textFormatter = new ItalicFormatter(new UnderlineFormatter(new BaseFormatter()));
                 System.out.println(textFormatter.format(text));
             }
-            else if(choice.equalsIgnoreCase("underlineditalicbold")){
+            else if(command.equalsIgnoreCase("underlineditalicbold")){
                 textFormatter = new BoldFormatter(new ItalicFormatter(new UnderlineFormatter(new BaseFormatter())));
                 System.out.println(textFormatter.format(text));
             }
-            else if(choice.equalsIgnoreCase("exit"))
+            else if(command.equalsIgnoreCase("exit"))
                 System.out.println("Exiting...");
             else
                 System.out.println("Invalid Text Formatter");
-        }while(!choice.equalsIgnoreCase("exit"));
+        }while(!command.equalsIgnoreCase("exit"));
     }
 }
