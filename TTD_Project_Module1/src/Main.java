@@ -9,6 +9,7 @@ public class Main {
         System.out.println("|       Management Menu (menu)      |");
         System.out.println("Recruit Employee (recruit)");
         System.out.println("Show Employee Details (show)");
+        System.out.println("Fetch Employee (fetch)");
         System.out.println("Fire Employee (fire)");
         System.out.println("List Out Employees (list)");
         System.out.println("Promote/Demote Employee (role)");
@@ -21,6 +22,13 @@ public class Main {
         System.out.println("General Manager (gm)");
         System.out.println("Assistant General Manager (agm)");
         System.out.print("Select Employee Role: ");
+    }
+    public static void fetchEmployee(){
+        System.out.println("|       Fetch Employee      |");
+        System.out.println("Name (employeename)");
+        System.out.println("Role (employeerole)");
+        System.out.println("Salary (employeesalary)");
+        System.out.print("Fetch Employee: ");
     }
     public static void recruit(IEmployee employee){
         if(employeeManager.recruitEmployee(employee))
@@ -81,6 +89,20 @@ public class Main {
                     System.out.println(employeeManager.getEmployee(employeeId));
                 else
                     System.out.println("Invalid Employee Id");
+            }
+            else if(command.equalsIgnoreCase("fetch")){
+                System.out.print("Employee Id: ");
+                employeeId = input.next();
+                if(employeeManager.isEmployee(employeeId)){
+                    fetchEmployee();
+                    command = input.next();
+                    if (command.equalsIgnoreCase("employeename"))
+                        System.out.println("Employee Name: " + employeeManager.getEmployee(employeeId).getEmployeeName());
+                    else if(command.equalsIgnoreCase("employeerole"))
+                        System.out.println("Employee Role: " + employeeManager.getEmployee(employeeId).getEmployeeRole());
+                    else if(command.equalsIgnoreCase("employeesalary"))
+                        System.out.println("Employee Salary" + employeeManager.getEmployee(employeeId).getEmployeeSalary());
+                }
             }
             else if(command.equalsIgnoreCase("fire")){
                 System.out.print("Employee Id: ");
