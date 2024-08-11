@@ -21,14 +21,12 @@ public class Main {
         System.out.println("Chief Executive Officer (ceo)");
         System.out.println("General Manager (gm)");
         System.out.println("Assistant General Manager (agm)");
-        System.out.print("Select Employee Role: ");
     }
     public static void fetchEmployee(){
         System.out.println("|       Fetch Employee      |");
         System.out.println("Name (employeename)");
         System.out.println("Role (employeerole)");
         System.out.println("Salary (employeesalary)");
-        System.out.print("Fetch Employee: ");
     }
     public static void recruit(IEmployee employee){
         if(employeeManager.recruitEmployee(employee))
@@ -51,12 +49,12 @@ public class Main {
         String employeeSalary;
         String command;
 
-        employeeManagementMenu();
+        employeeManagementMenu();//Setting Up Employee Management Menu
         do{
             System.out.print("Enter Command: ");
             command = input.next();
             if(command.equalsIgnoreCase("menu"))
-                employeeManagementMenu();
+                employeeManagementMenu();//Display Employee Management Menu
             else if(command.equalsIgnoreCase("recruit")){
                 System.out.print("Employee Id: ");
                 employeeId = input.next();
@@ -65,22 +63,30 @@ public class Main {
                 String employeeName = input.nextLine();
                 System.out.print("Employee Salary: ");
                 employeeSalary = input.next();
-                recruitment();
-                command = input.next();
-                if(command.equalsIgnoreCase("ceo")){
-                    employee = new CEO(employeeId, employeeName, employeeManager.formatSalary(employeeSalary));
-                    recruit(employee);
-                }
-                else if(command.equalsIgnoreCase("gm")){
-                    employee = new GM(employeeId, employeeName, employeeManager.formatSalary(employeeSalary));
-                    recruit(employee);
-                }
-                else if(command.equalsIgnoreCase("agm")){
-                    employee = new AGM(employeeId, employeeName, employeeManager.formatSalary(employeeSalary));
-                    recruit(employee);
-                }
-                else
-                    System.out.println("Invalid Employee Role");
+                recruitment();//Displaying Available Employee Role
+                do{
+                    System.out.print("Select Employee Role: ");
+                    command = input.next();
+                    if (command.equalsIgnoreCase("ceo")) {
+                        employee = new CEO(employeeId, employeeName, employeeManager.formatSalary(employeeSalary));
+                        recruit(employee);
+                        break;
+                    }
+                    else if (command.equalsIgnoreCase("gm")) {
+                        employee = new GM(employeeId, employeeName, employeeManager.formatSalary(employeeSalary));
+                        recruit(employee);
+                        break;
+                    }
+                    else if (command.equalsIgnoreCase("agm")) {
+                        employee = new AGM(employeeId, employeeName, employeeManager.formatSalary(employeeSalary));
+                        recruit(employee);
+                        break;
+                    }
+                    else if(command.equalsIgnoreCase("back"))
+                        System.out.println("Safe exiting recruit");
+                    else
+                        System.out.println("Invalid Employee Role");
+                }while(!command.equalsIgnoreCase("back"));//Exiting the loop with the use "back" command
             }
             else if(command.equalsIgnoreCase("show")){
                 System.out.print("Employee Id: ");
@@ -95,13 +101,26 @@ public class Main {
                 employeeId = input.next();
                 if(employeeManager.isEmployee(employeeId)){
                     fetchEmployee();
-                    command = input.next();
-                    if (command.equalsIgnoreCase("employeename"))
-                        System.out.println("Employee Name: " + employeeManager.getEmployee(employeeId).getEmployeeName());
-                    else if(command.equalsIgnoreCase("employeerole"))
-                        System.out.println("Employee Role: " + employeeManager.getEmployee(employeeId).getEmployeeRole());
-                    else if(command.equalsIgnoreCase("employeesalary"))
-                        System.out.println("Employee Salary" + employeeManager.getEmployee(employeeId).getEmployeeSalary());
+                    do {
+                        System.out.print("Fetch Employee: ");
+                        command = input.next();
+                        if (command.equalsIgnoreCase("employeename")) {
+                            System.out.println("Employee Name: " + employeeManager.getEmployee(employeeId).getEmployeeName());
+                            break;
+                        }
+                        else if (command.equalsIgnoreCase("employeerole")) {
+                            System.out.println("Employee Role: " + employeeManager.getEmployee(employeeId).getEmployeeRole());
+                            break;
+                        }
+                        else if (command.equalsIgnoreCase("employeesalary")) {
+                            System.out.println("Employee Salary" + employeeManager.getEmployee(employeeId).getEmployeeSalary());
+                            break;
+                        }
+                        else if(command.equalsIgnoreCase("back"))
+                            System.out.println("Safe exiting fetch");
+                        else
+                            System.out.println("Invalid Fetch");
+                    }while(!command.equalsIgnoreCase("back"));//Exiting the loop with the use of "back" command
                 }
             }
             else if(command.equalsIgnoreCase("fire")){
