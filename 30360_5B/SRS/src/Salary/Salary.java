@@ -17,7 +17,7 @@ public class Salary implements ISalary {
         da = 0.08 * salary;
         grossSalary = hra + da + salary;
         tax = 0.08 * grossSalary;
-        this.salary = grossSalary - tax;
+        this.salary = grossSalary - tax - (0.05 * grossSalary) - (0.02 * grossSalary);
     }
     public String formatSalary(){
         return NumberFormat.getCurrencyInstance().format(salary);
