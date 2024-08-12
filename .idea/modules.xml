@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/AOOP.iml" filepath="$PROJECT_DIR$/.idea/AOOP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/IN_LAB_2_CreationalDP_GameAPP/IN_LAB_2_CreationalDP_GameAPP.iml" filepath="$PROJECT_DIR$/IN_LAB_2_CreationalDP_GameAPP/IN_LAB_2_CreationalDP_GameAPP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/IN_LAB_3_StructuralDP_MusicAPP/IN_LAB_3_StructuralDP_MusicAPP.iml" filepath="$PROJECT_DIR$/IN_LAB_3_StructuralDP_MusicAPP/IN_LAB_3_StructuralDP_MusicAPP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Logger/Logger.iml" filepath="$PROJECT_DIR$/Logger/Logger.iml" />
+    </modules>
+  </component>
+</project>
