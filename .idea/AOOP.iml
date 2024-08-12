@@ -2,7 +2,23 @@
 <module type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/30360_1BLAB/30360_1ALAB/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/30360_1BLAB/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/30360_2ALAB/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/30360_2BLAB/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/30360_3ALAB/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/30360_3BLAB/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/30360_4ALAB/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/30360_4BLAB/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/30360_5B/DIP/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/30360_5B/ISP/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/30360_5B/LSP/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/30360_5B/OCP/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/30360_5B/SRS/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/30360_5B/src" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/30360_5B/out" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
