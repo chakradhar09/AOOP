@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class MemberShipManager {
-    private final List<IMembership> memberships = new ArrayList<>();
+    private static final List<IMembership> memberships = new ArrayList<>();
 
     public void addMemberShip(IMembership membership){
         memberships.add(membership);

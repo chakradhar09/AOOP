@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class BookManager {
-    private final List<IBook> books = new ArrayList<>();
+    private static final List<IBook> books = new ArrayList<>();
 
     public void addBooks(IBook book){
         books.add(book);

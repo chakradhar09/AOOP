@@ -109,14 +109,17 @@ public class Main {
                             case 1:
                                 book = new Fantasy(bookISBN, bookName, bookAuthor, noOfBooks);
                                 bookManager.addBooks(book);
+                                System.out.println("Book Added to Library");
                                 break;
                             case 2:
                                 book = new Scifi(bookISBN, bookName, bookAuthor, noOfBooks);
                                 bookManager.addBooks(book);
+                                System.out.println("Book Added to Library");
                                 break;
                             case 3:
                                 book = new Academic(bookISBN, bookName, bookAuthor, noOfBooks);
                                 bookManager.addBooks(book);
+                                System.out.println("Book Added to Library");
                                 break;
                             default:
                                 System.out.println("Invalid Genre");
