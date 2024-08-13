@@ -9,8 +9,12 @@ public class MemberShipManager {
     private static final List<IMembership> memberships = new ArrayList<>();
 
     public void addMemberShip(IMembership membership){
-        memberships.add(membership);
-        System.out.println("Membership created successfully");
+        if(!memberships.contains(membership)) {
+            memberships.add(membership);
+            System.out.println("Membership created successfully");
+            return;
+        }
+        System.out.println("Membership already exits");
     }
     public IMembership getMemberShip(String memberShipId){
         for(IMembership i:  memberships){
