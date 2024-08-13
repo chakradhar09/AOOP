@@ -38,7 +38,7 @@ public class Main {
         Scanner input = new Scanner(System.in);
         ILibrary library = new Library();
         IMembership membership = null;
-        IBook book = null;
+        IBook book;
 
         int choice;
         String memberShipId;
