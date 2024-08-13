@@ -170,7 +170,7 @@ public class Main {
                     System.out.println("Invalid Employee Id");
             }
             else if(command.equalsIgnoreCase("exit"))
-                System.out.println("Exiting..");
+                System.out.println("Exiting...");
             else
                 System.out.println("Invalid Command");
         }while(!command.equalsIgnoreCase("exit"));
