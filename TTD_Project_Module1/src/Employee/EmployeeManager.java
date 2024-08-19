@@ -23,7 +23,7 @@ public class EmployeeManager {
         return false;
     }
     public boolean recruitEmployee(IEmployee employee){
-        if(isEmployee(employee.getEmployeeId()))
+        if(employees.contains(employee))
             return false;
         return employees.add(employee);
     }
