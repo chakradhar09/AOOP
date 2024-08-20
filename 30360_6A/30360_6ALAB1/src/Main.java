@@ -72,6 +72,8 @@ public class Main {
             }
             else if(command.equalsIgnoreCase("exit"))
                 System.out.println("Exiting...");
+            else
+                System.out.println("Invalid Operation");
         }while(!command.equalsIgnoreCase("exit"));
     }
 }

@@ -14,9 +14,9 @@ public class TODO {
 
         return todo.contains(task);
     }
-    public String isTask(int position){
+    public boolean isTask(int position){
 
-        return todo.get(position);
+        return position < todo.size();
     }
 
     public boolean addTask(String task){
