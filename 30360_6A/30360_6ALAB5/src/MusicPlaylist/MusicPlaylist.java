@@ -29,10 +29,11 @@ public class MusicPlaylist {
         return musicPlaylist.remove(song);
     }
     public String moveSong(String song, int position){
+        musicPlaylist.set(musicPlaylist.indexOf(song), musicPlaylist.get(position));
         return musicPlaylist.set(position, song);
     }
     public void playList(){
         for(String i: musicPlaylist)
-            System.out.println(musicPlaylist.indexOf(i) + " " + i);
+            System.out.println((musicPlaylist.indexOf(i) + 1) + " " + i);
     }
 }

@@ -67,8 +67,8 @@ public class Main {
                 if(musicPlaylist.isEmpty()){
                     if (musicPlaylist.isSong(song)) {
                         if (position <= musicPlaylist.getSize()) {
-                            if (position != musicPlaylist.getIndex(song) + 1) {
-                                if (Objects.nonNull(musicPlaylist.moveSong(song, position )))
+                            if (position - 1 != musicPlaylist.getIndex(song)) {
+                                if (Objects.nonNull(musicPlaylist.moveSong(song, position - 1)))
                                     System.out.println("Song Moved to Position " + position);
                                 else
                                     System.out.println("Failed to Move Song");
