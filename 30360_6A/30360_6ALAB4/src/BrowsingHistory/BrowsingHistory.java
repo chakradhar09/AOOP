@@ -2,27 +2,21 @@ package BrowsingHistory;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.Iterator;
 
 public class BrowsingHistory {
-    private static final Deque<String> backwardBrowsingHistory = new ArrayDeque<>();
-    private final Deque<String> forwardBrowsingHistory = new ArrayDeque<>();
-    private final Iterator<String> backwardIterator;
-    private final Iterator<String> forwardIterator;
+    private final Deque<String> backwardBrowsingHistory;
+    private final Deque<String> forwardBrowsingHistory;
 
     public BrowsingHistory(){
-        this.backwardIterator = backwardBrowsingHistory.iterator();
-        this.forwardIterator = forwardBrowsingHistory.descendingIterator();
+        this.backwardBrowsingHistory = new ArrayDeque<>();
+        this.forwardBrowsingHistory = new ArrayDeque<>();
     }
 
-    public boolean backwardHasNext(){
-        return backwardIterator != null && backwardIterator.hasNext();
-    }
-    public boolean forwardHasNext(){
-        return forwardIterator != null && forwardIterator.hasNext();
-    }
-    public boolean isEmpty(){
+    public boolean isPreviousEmpty(){
         return !backwardBrowsingHistory.isEmpty();
+    }
+    public boolean isNextEmpty(){
+        return !forwardBrowsingHistory.isEmpty();
     }
 
     public String currentPage(){
@@ -32,12 +26,10 @@ public class BrowsingHistory {
         backwardBrowsingHistory.offerFirst(page);
         return backwardBrowsingHistory.peek();
     }
-    public String previousPage(){
+    public void previousPage(){
         forwardBrowsingHistory.offerLast(backwardBrowsingHistory.pollFirst());
-        return backwardBrowsingHistory.peek();
     }
-    public String nextPage(){
+    public void nextPage(){
         backwardBrowsingHistory.offerFirst(forwardBrowsingHistory.pollLast());
-        return backwardBrowsingHistory.peek();
     }
 }
