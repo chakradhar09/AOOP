@@ -1,4 +1,4 @@
-package Employee;
+package Comaparable.Employee;
 
 public class Employee implements Comparable<Employee>{
     private final int empId;
@@ -11,9 +11,6 @@ public class Employee implements Comparable<Employee>{
 
     public int getEmpId(){
         return empId;
-    }
-    public String getName(){
-        return name;
     }
 
     public int compareTo(Employee employee){

@@ -1,4 +1,6 @@
-import Employee.Employee;
+package Comaparable;
+
+import Comaparable.Employee.Employee;
 
 import java.util.ArrayList;
 import java.util.Collections;
