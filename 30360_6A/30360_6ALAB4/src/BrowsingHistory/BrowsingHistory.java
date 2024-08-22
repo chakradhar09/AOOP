@@ -6,7 +6,7 @@ import java.util.Iterator;
 
 public class BrowsingHistory {
     private static final Deque<String> backwardBrowsingHistory = new ArrayDeque<>();
-    private static final Deque<String> forwardBrowsingHistory = new ArrayDeque<>();
+    private final Deque<String> forwardBrowsingHistory = new ArrayDeque<>();
     private final Iterator<String> backwardIterator;
     private final Iterator<String> forwardIterator;
 
@@ -16,18 +16,10 @@ public class BrowsingHistory {
     }
 
     public boolean backwardHasNext(){
-        if(backwardIterator.hasNext()){
-            backwardIterator.next();
-            return true;
-        }
-        return false;
+        return backwardIterator != null && backwardIterator.hasNext();
     }
     public boolean forwardHasNext(){
-        if(forwardIterator.hasNext()){
-            forwardIterator.next();
-            return true;
-        }
-        return false;
+        return forwardIterator != null && forwardIterator.hasNext();
     }
     public boolean isEmpty(){
         return !backwardBrowsingHistory.isEmpty();

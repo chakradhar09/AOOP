@@ -33,28 +33,22 @@ public class Main {
                 System.out.println(browsingHistory.addNewPage(page));
             }
             else if(command.equalsIgnoreCase("previous")){
-                if(browsingHistory.isEmpty()){
-                    if (browsingHistory.backwardHasNext())
-                        System.out.println("Current: " + browsingHistory.previousPage());
-                    else
-                        System.out.println("This is the last page");
-                }
+                if (browsingHistory.backwardHasNext())
+                    System.out.println("Current: " + browsingHistory.previousPage());
                 else
-                    System.out.println("The Browsing History is Empty");
+                    System.out.println("This is the last page");
+
             }
             else if(command.equalsIgnoreCase("next")){
-                if(browsingHistory.isEmpty()){
-                    if (browsingHistory.forwardHasNext())
-                        System.out.println("Current: " + browsingHistory.nextPage());
-                    else
-                        System.out.println("This is the first page");
-                }
+                if (browsingHistory.forwardHasNext())
+                    System.out.println("Current: " + browsingHistory.nextPage());
                 else
-                    System.out.println("The Browsing History is Empty");
+                    System.out.println("This is the first page");
+
             }
             else if(command.equalsIgnoreCase("current")){
                 if(browsingHistory.isEmpty())
-                    System.out.println(browsingHistory.currentPage());
+                    System.out.println("Current: " + browsingHistory.currentPage());
                 else
                     System.out.println("The Browsing History is Empty");
             }
