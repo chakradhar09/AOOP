@@ -14,6 +14,9 @@ public class Contact implements Comparable<Contact>{
     public String getName(){
         return name;
     }
+    public String getPhoneNumber(){
+        return phoneNumber;
+    }
 
     public int compareTo(Contact contact){
         return name.compareTo(contact.getName());
