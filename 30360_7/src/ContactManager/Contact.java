@@ -11,12 +11,12 @@ public class Contact implements Comparable<Contact>{
         this.phoneNumber = phoneNumber;
     }
 
-    public String getPhoneNumber(){
-        return phoneNumber;
+    public String getName(){
+        return name;
     }
 
     public int compareTo(Contact contact){
-        return phoneNumber.compareTo(contact.getPhoneNumber());
+        return name.compareTo(contact.getName());
     }
     public String toString(){
         return "\nName: " + name + '\n' +
