@@ -13,7 +13,7 @@ public class Client {
         System.out.println("Exit (exit)");
     }
     static void productMenu(){
-        System.out.println("|               Product Manager             ");
+        System.out.println("|               Product Manager             |");
         System.out.println("Concrete Product 1 (product1)");
         System.out.println("Concrete Product 2 (product2)");
         System.out.print("Select: ");
