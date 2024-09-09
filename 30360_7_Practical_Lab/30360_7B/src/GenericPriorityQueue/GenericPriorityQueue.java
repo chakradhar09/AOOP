@@ -22,19 +22,13 @@ public class GenericPriorityQueue<T> {
     }
 
     public boolean isEmpty(){
-        return priorityQueue.isEmpty();
+        return !priorityQueue.isEmpty();
     }
 
     public void enQueue(T element, int priority){
-        priorityQueue.offer(new Node<T>(element, priority));
+        priorityQueue.offer(new Node<>(element, priority));
     }
     public T deQueue(){
         return Objects.requireNonNull(priorityQueue.poll()).element;
-    }
-    public T peek(){
-        return Objects.nonNull(priorityQueue.peek()) ? priorityQueue.peek().element:null;
-    }
-    public int size(){
-        return priorityQueue.size();
     }
 }
