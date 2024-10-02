@@ -1,0 +1,11 @@
+<web-app>
+    <servlet>
+        <servlet-name>VoterEligibilityServlet</servlet-name>
+        <servlet-class>VoterEligibilityServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>VoterEligibilityServlet</servlet-name>
+        <url-pattern>/VoterEligibilityServlet</url-pattern>
+    </servlet-mapping>
+</web-app>
