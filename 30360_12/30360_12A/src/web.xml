@@ -1,11 +1,7 @@
-<web-app>
-    <servlet>
-        <servlet-name>VoterEligibilityServlet</servlet-name>
-        <servlet-class>VoterEligibilityServlet</servlet-class>
-    </servlet>
+<!DOCTYPE web-app PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
-    <servlet-mapping>
-        <servlet-name>VoterEligibilityServlet</servlet-name>
-        <url-pattern>/VoterEligibilityServlet</url-pattern>
-    </servlet-mapping>
+<web-app>
+    <display-name>Archetype Created Web Application</display-name>
 </web-app>

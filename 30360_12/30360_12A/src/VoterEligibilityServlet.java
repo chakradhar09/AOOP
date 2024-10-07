@@ -37,6 +37,6 @@ public class VoterEligibilityServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException{
-        response.sendRedirect("Index.html");
+        response.sendRedirect("Index.jsp");
     }
 }

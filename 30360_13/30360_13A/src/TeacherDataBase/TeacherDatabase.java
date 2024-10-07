@@ -47,6 +47,9 @@ public class TeacherDatabase {
             preparedStatement.executeUpdate();
 
             System.out.println("Record Inserted Successfully");
+
+            preparedStatement.close();
+            connection.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
